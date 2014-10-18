@@ -1,0 +1,10 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:TestPictureBrowser">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Style/ListBoxItem.xaml"/>
+        <ResourceDictionary Source="Style/Button.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+</ResourceDictionary>
