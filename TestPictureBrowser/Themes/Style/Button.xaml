@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <!-- 上一条记录按钮模板 -->
+    <!-- Template of previous button -->
     <ControlTemplate x:Key="BtnPreviousTemplate" TargetType="{x:Type Button}">
         <Border BorderThickness="0" Background="Transparent">
             <Image x:Name="ButtonImage" Source="../Image/Pre_Normal.png" Margin="2"/>
@@ -16,7 +16,7 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <!-- 下一条记录按钮模板 -->
+    <!-- Template of next button -->
     <ControlTemplate x:Key="BtnNextTemplate" TargetType="{x:Type Button}">
         <Border BorderThickness="0" Background="Transparent">
             <Image x:Name="ButtonImage" Source="../Image/Next_Normal.png" Margin="2"/>
@@ -28,6 +28,23 @@
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
                 <Setter TargetName="ButtonImage" Property="Source" Value="../Image/Next_Press.png" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <!-- ControlTemplate of close button -->
+    <ControlTemplate x:Key="BtnCloseTemplate" TargetType="{x:Type Button}">
+        <Border BorderThickness="0" Background="Transparent">
+            <Image x:Name="ImgClose" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       Source="../Image/Close.png"/>
+        </Border>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="ImgClose" Property="Source" Value="../Image/Close_Hover.png" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="ImgClose" Property="Source" Value="../Image/Close_Press.png" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

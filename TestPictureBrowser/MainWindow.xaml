@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:MyNamespace="clr-namespace:TestPictureBrowser"
         xmlns:gifLib="clr-namespace:GifImageLib;assembly=GifImageLib"
+        xmlns:controls="clr-namespace:TestPictureBrowser.Controls"
         Title="MainWindow" Height="640" Width="800" Loaded="MainWindow_OnLoaded" KeyDown="MainWindow_OnKeyDown">
     <Window.Resources>
         <ResourceDictionary>
@@ -24,11 +25,12 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- 图片展示区 -->
+        <!-- Image display area -->
         <Grid x:Name="ShowPic" Grid.Row="0" Margin="5,5,5,5"
                   Width="{Binding ElementName=ControlSz,Path=ActualWidth}">
-            <Image Name="ImgMain" DataContext="{Binding}" Stretch="None" /><!--RenderTransform="{StaticResource ImageTransformResource}"-->
-            <gifLib:GifImage Name="GifImageMain" DataContext="{Binding}" Stretch="None"/>
+            <controls:AsyncImage x:Name="ImgMain" DataContext="{Binding}" Source="{Binding PicturePath}" Stretch="Uniform" />
+            <!--RenderTransform="{StaticResource ImageTransformResource}"-->
+            <gifLib:GifImage x:Name="GifImageMain" DataContext="{Binding}" Stretch="None"/>
             
             <Button x:Name="ButtonPre" Width="64" VerticalAlignment="Center" HorizontalAlignment="Left"
                     Click="ButtonPre_OnClick" Template="{StaticResource BtnPreviousTemplate}" />
@@ -36,12 +38,12 @@
                     Click="ButtonNext_OnClick" Template="{StaticResource BtnNextTemplate}" />
         </Grid>
         
-        <!-- 搜索框 -->
+        <!-- Search control -->
         <MyNamespace:CustomSearchControl x:Name="Searcher" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed"
                                          OnSearchNext="Searcher_OnOnSearchNext" OnSearchPrevious="Searcher_OnOnSearchPrevious"
                                          OnTextChange="Searcher_OnOnTextChange" OnStopSearch="Searcher_OnOnStopSearch"/>
-        
-        <ListBox Name="ListPics" Background="Transparent" BorderThickness="0"  Grid.Row="1" 
+
+        <ListBox x:Name="ListPics" Background="Transparent" BorderThickness="0"  Grid.Row="1" 
                               ItemsSource="{Binding IsAsync=True}" Style="{x:Null}" 
                               SelectionChanged="ListPics_OnSelectionChanged"  
                               ScrollViewer.CanContentScroll="True" 
@@ -66,11 +68,8 @@
                             <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
                         <Grid Background="White" VerticalAlignment="Center" Width="207" Height="152" HorizontalAlignment="Center" Grid.Row="0">
-                            <MyNamespace:ThrumbImage Name="imgNavigate" Width="207" Height="152"
-                                                          ThrumbImageSource="{Binding PicturePath}" 
-                                                          ToolTip="{Binding PictureTitle}" 
-                                                          Tag="{Binding UniqueId}"
-                                                          RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+                            <controls:AsyncImage x:Name="imgNavigate" Width="207" Height="152" Source="{Binding PicturePath}" 
+                                                 ToolTip="{Binding PictureTitle}" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
                         </Grid>
                         <TextBlock Grid.Row="1" Text="{Binding PictureTitle}" ToolTip="{Binding PictureTitle}" HorizontalAlignment="Center" Margin="10"/>
                     </Grid>

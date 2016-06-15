@@ -1,9 +1,12 @@
-﻿namespace TestPictureBrowser.Utils
+﻿namespace TestPictureBrowser.Helpers
 {
+    /// <summary>
+    /// File helper
+    /// </summary>
     public class FileHelper
     {
         /// <summary>
-        /// 获取文件后缀(.*)
+        /// Get file extension(.*)
         /// </summary>
         /// <param name="strPath"></param>
         /// <returns></returns>
@@ -22,7 +25,7 @@
         }
 
         /// <summary>
-        /// 获取文件名称
+        /// Get file name
         /// </summary>
         /// <param name="strPath"></param>
         /// <returns></returns>

@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:TestPictureBrowser.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary>
+            <Storyboard x:Key="StoryboardLoading">
+                <DoubleAnimation Storyboard.TargetName="Rotater" Storyboard.TargetProperty="(RotateTransform.Angle)" 
+                                 From="0" To="359" Duration="0:0:02" RepeatBehavior="Forever" />
+            </Storyboard>
+        </ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:AsyncImage}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:AsyncImage}">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Image x:Name="ContentImg" Stretch="None" Source="../Image/404.png"/>
+                            <Image x:Name="LoadingImg" Stretch="None" Source="../Image/loading.png" RenderTransformOrigin="0.5,0.5">
+                                <Image.RenderTransform>
+                                    <RotateTransform x:Name="Rotater" Angle="0" />
+                                </Image.RenderTransform>
+                            </Image>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
